@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display View</title>
+    <style>
+        table, td {
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+
+        .row {
+            display: flex;
+        }
+        
+        .column {
+            flex: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="well4 bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="grid_6 wow fadeInLeft">
+                    <img data-th-src="${retrieveRD.imageUrl}" alt=""><br><br>
+                </div>
+                <div class="grid_6 wow fadeInRight">
+                    READY IN: <span data-th-text="${retrieveRD.readyInMinutes}"></span> MINUTES<br>
+                    SERVINGS: <span data-th-text="${retrieveRD.servings}"></span><br>
+                    <UL>
+                        
+                        INGREDIENTS: <li data-th-text="${retrieveRD.ingredients}"></li><br>
+                        
+                    </UL>
+                   
+                    <Ul>
+                        <li data-th-each="l : ${retrieveRD.steps}">
+                            <span data-th-text="${l}"></span>
+                        </li>
+                    </Ul>
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

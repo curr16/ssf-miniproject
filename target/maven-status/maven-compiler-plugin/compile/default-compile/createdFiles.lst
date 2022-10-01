@@ -1,11 +1,12 @@
+vttp\ssf\miniproject\models\Recipes.class
+vttp\ssf\miniproject\controllers\RecipeRestController.class
 vttp\ssf\miniproject\models\RecipeDetails.class
 vttp\ssf\miniproject\Application.class
-vttp\ssf\miniproject\repositories\RecipeRepo.class
-vttp\ssf\miniproject\services\UserService.class
-vttp\ssf\miniproject\AppConfig.class
-vttp\ssf\miniproject\models\Recipes.class
 vttp\ssf\miniproject\models\User.class
 vttp\ssf\miniproject\services\RecipeDetailsService.class
+vttp\ssf\miniproject\repositories\RecipeRepo.class
 vttp\ssf\miniproject\services\RecipeService.class
+vttp\ssf\miniproject\services\UserService.class
+vttp\ssf\miniproject\AppConfig.class
 vttp\ssf\miniproject\controllers\RecipeController.class
 vttp\ssf\miniproject\repositories\UserRepo.class

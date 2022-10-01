@@ -46,7 +46,7 @@ public class RecipeDetailsService {
         String uri = UriComponentsBuilder.fromUriString(url)
                 .pathSegment(numberID, "information")
                 .toUriString();
-        System.out.println(">>>>>> URI" + uri);
+        // System.out.println(">>>>>> URI" + uri);
 
         RestTemplate template = new RestTemplate();
         ResponseEntity<String> resp;
@@ -100,7 +100,15 @@ public class RecipeDetailsService {
         rr.saveUserRecipe(rd);
     }
 
-    
+    public RecipeDetails callDisplayRecipe(String name) {
+        return rr.displayRecipe(name);
+    }
+
+    public List<String> tableofRecipe() {
+        return rr.getAllRecipes();
+    }
+
+
 }
 
 

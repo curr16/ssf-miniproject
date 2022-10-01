@@ -41,8 +41,11 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password">
                   </div>
+                  <div data-th-if="${userError}">
+                    <span class="text-danger">User does not exist</span>
+                  </div>
                   <div data-th-if="${error}">
-                    <span class="text danger">Wrong Password</span>
+                    <span class="text-danger">Wrong Password</span>
                   </div>
                   
                   <div class="d-flex mb-5 align-items-center">
@@ -52,7 +55,8 @@
                     </label>
                     <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
                   </div>
-    
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a th:href="@{register}" class="fw-bold text-body"><u>Login here</u></a></p>
+                  
                   <input type="submit" value="Log In" class="btn btn-block btn-primary">
     
               

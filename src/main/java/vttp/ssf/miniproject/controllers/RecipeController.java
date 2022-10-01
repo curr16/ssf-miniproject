@@ -1,7 +1,6 @@
 package vttp.ssf.miniproject.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import vttp.ssf.miniproject.models.RecipeDetails;
 import vttp.ssf.miniproject.models.Recipes;
 import vttp.ssf.miniproject.models.User;
-import vttp.ssf.miniproject.repositories.UserRepo;
 import vttp.ssf.miniproject.services.RecipeDetailsService;
 import vttp.ssf.miniproject.services.RecipeService;
 import vttp.ssf.miniproject.services.UserService;
@@ -32,7 +30,6 @@ public class RecipeController {
 
     @Autowired
     private RecipeDetailsService recipeDetailsSvc;
-
 
     @Autowired
     private UserService uService;
@@ -64,18 +61,22 @@ public class RecipeController {
         User existingUser = uService.getUserDetail(loginEmail);
 
         if (existingUser == null) {
+            
             System.out.println("user did not exist");
+            String userError = "user did not exist";
+            model.addAttribute("userError", userError);
+            return "login";
 
         }
 
         if (BCrypt.checkpw(loginPassword, existingUser.getPassword())) {
             System.out.println("Password matches");
-            return "createForm";
+            return "recipeSearch";
+
         } else {
 
-            
             String error = "WRONG PASSWORD!!";
-            System.out.println("Password does not match");
+            // System.out.println("Password does not match");
             model.addAttribute("error", error);
             return "login";
         }
@@ -100,7 +101,6 @@ public class RecipeController {
 
     }
 
-
     @GetMapping(path = "/ingredients")
     public String getRecipes(Model model, @RequestParam String ingredients) {
 
@@ -115,12 +115,37 @@ public class RecipeController {
     public String getRecipeDetails(Model model, @RequestParam String id) {
 
         RecipeDetails retrieveRD = recipeDetailsSvc.getRecipeDetails(id);
-        //System.out.println("ID>>>>>> " + id);
 
         model.addAttribute("retrieveRD", retrieveRD);
         return "view";
     }
+
+    @GetMapping(path = "/{name}")
+    public String getdisplayRecipe(Model model, @PathVariable(name = "name") String name) {
+        RecipeDetails getDetails = recipeDetailsSvc.callDisplayRecipe(name);
+        model.addAttribute("displayR", getDetails);
+
+        return "displayRecipe";
+    }
+
+    @RequestMapping("/register")
+    public String registerPage() {
+        return "index";
+    }
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
+    }  
     
+    @RequestMapping(path = "/savedRecipes")
+    public String getdisplayRecipe(Model model) {
+        
+        List<String> allRecipes = recipeDetailsSvc.tableofRecipe();
+        
+        model.addAttribute("allRecipes", allRecipes);
+
+        return "createdRecipe";
+    }
 }
     
 

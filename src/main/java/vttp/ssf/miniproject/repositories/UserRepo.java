@@ -50,16 +50,6 @@ public class UserRepo {
     }
 
 
-
-
-
-
-
-
-
-
-
-
         // ValueOperations<String, String> valueOp = redisTemplate.opsForValue();
         // String newsFeedResult = valueOp.get(id);
         // System.out.println("NewsFeedRepositories - getArticle - newsFeedResult: " + newsFeedResult);

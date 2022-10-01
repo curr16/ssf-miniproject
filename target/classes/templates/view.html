@@ -11,8 +11,6 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-
-
         .row {
             display: flex;
         }
@@ -27,23 +25,21 @@
     <section class="well4 bg-primary">
         <div class="container">
             <div class="row">
-                <div class="grid_6 wow fadeInLeft">
-                    <img data-th-src="${retrieveRD.imageUrl}" alt=""><br><br>
-                </div>
                 <div class="grid_6 wow fadeInRight">
+                    <img data-th-src="${retrieveRD.imageUrl}" alt=""><br><br>
                     READY IN: <span data-th-text="${retrieveRD.readyInMinutes}"></span> MINUTES<br>
                     SERVINGS: <span data-th-text="${retrieveRD.servings}"></span><br>
-                    <UL>
+                    <ul>
                         
                         INGREDIENTS: <li data-th-text="${retrieveRD.ingredients}"></li><br>
                         
-                    </UL>
+                    </ul>
                    
-                    <Ul>
+                    <ul>
                         <li data-th-each="l : ${retrieveRD.steps}">
                             <span data-th-text="${l}"></span>
                         </li>
-                    </Ul>
+                    </ul>
 
                     
                 </div>

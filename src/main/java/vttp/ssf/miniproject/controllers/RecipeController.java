@@ -61,7 +61,7 @@ public class RecipeController {
         User existingUser = uService.getUserDetail(loginEmail);
 
         if (existingUser == null) {
-            
+
             System.out.println("user did not exist");
             String userError = "user did not exist";
             model.addAttribute("userError", userError);
@@ -96,8 +96,10 @@ public class RecipeController {
 
         RecipeDetails rd = RecipeDetails.createNewRecipe(uploadRecipeName, uploadMinutes, uploadServings, uploadIngredients, uploadInstructions);
         recipeDetailsSvc.saveNewUserRecipe(rd);
+        List<String> allRecipes = recipeDetailsSvc.tableofRecipe();
+        model.addAttribute("allRecipes", allRecipes);
         
-        return null;
+        return "createdRecipe";
 
     }
 
@@ -122,8 +124,9 @@ public class RecipeController {
 
     @GetMapping(path = "/{name}")
     public String getdisplayRecipe(Model model, @PathVariable(name = "name") String name) {
-        RecipeDetails getDetails = recipeDetailsSvc.callDisplayRecipe(name);
-        model.addAttribute("displayR", getDetails);
+        RecipeDetails createdRecipeDetails = recipeDetailsSvc.callDisplayRecipe(name);
+        System.out.println(createdRecipeDetails);
+        model.addAttribute("displayR", createdRecipeDetails);
 
         return "displayRecipe";
     }
@@ -132,10 +135,16 @@ public class RecipeController {
     public String registerPage() {
         return "index";
     }
+
     @RequestMapping("/login")
     public String loginPage() {
         return "login";
     }  
+
+    @RequestMapping("/createForm")
+    public String formPage() {
+        return "createForm";
+    } 
     
     @RequestMapping(path = "/savedRecipes")
     public String getdisplayRecipe(Model model) {

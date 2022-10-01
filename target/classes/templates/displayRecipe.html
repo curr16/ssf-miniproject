@@ -11,8 +11,6 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-
-
         .row {
             display: flex;
         }
@@ -31,17 +29,17 @@
                     RECIPE NAME: <span data-th-text="${displayR.recipeName}"></span><br>
                     READY IN: <span data-th-text="${displayR.readyInMinutes}"></span> MINUTES<br>
                     SERVINGS: <span data-th-text="${displayR.servings}"></span><br>
-                    <UL>
+                    <ul>
                         
                         INGREDIENTS: <li data-th-text="${displayR.ingredients}"></li><br>
                         
-                    </UL>
+                    </ul>
                    
-                    <Ul>
+                    <ul>
                         <li data-th-each="l : ${displayR.steps}">
                             <span data-th-text="${l}"></span>
                         </li>
-                    </Ul> 
+                    </ul> 
                 </div>
             </div>
         </div>

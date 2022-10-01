@@ -24,6 +24,7 @@ public class RecipeRepo {
     private RedisTemplate<String, String> redisTemplate;
 
     public void saveUserRecipe(RecipeDetails rd){
+
         String newRecipeName = rd.getRecipeName();
 
         ValueOperations<String, String> valueOp = redisTemplate.opsForValue();
@@ -54,7 +55,9 @@ public class RecipeRepo {
     public RecipeDetails displayRecipe(String name) {
 
         ValueOperations<String, String> valueOp = redisTemplate.opsForValue();
+
         String jsonString = valueOp.get(name);
+        System.out.println(jsonString);
 
         Reader strReader = new StringReader(jsonString);
         JsonReader jsonReader = Json.createReader(strReader);

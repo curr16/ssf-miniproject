@@ -40,11 +40,15 @@
             
             <span class="border align-items-center">
                 <form action="/ingredients" method="GET">
-                <!-- <h2>Welcome back<span data-th-each="${name}"></span>!</h2> -->
-                <label for="searchReceipeInput" >Recipe Search</label>
-                <input type="text" name="ingredients" class="form-control" id="searchInputReceipt">
-                <button class="btn btn-primary" type="submit">Search</button>
+                    <!-- <h2>Welcome back<span data-th-each="${name}"></span>!</h2> -->
+                    <label for="searchReceipeInput" >Recipe Search</label>
+                    <input type="text" name="ingredients" class="form-control" id="searchInputReceipt">
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </form>
+                <form action="/createForm">
+                    <button class="btn btn-primary" type="submit">Create Recipe</button>
+                </form>
+
             </span>
             
         </div>

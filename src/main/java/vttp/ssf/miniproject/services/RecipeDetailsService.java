@@ -96,6 +96,7 @@ public class RecipeDetailsService {
         return null;      
     }
 
+    // save created recipe
     public void saveNewUserRecipe(RecipeDetails rd) {
         rr.saveUserRecipe(rd);
     }

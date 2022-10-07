@@ -24,6 +24,52 @@
             background-color: black;     
 
         }
+
+        .bg-image {
+        background-image:  url('https://pbs.twimg.com/media/EAZY3bnWwAIMrYK?format=jpg&name=4096x4096');
+        height: 100%; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+
+        .row {
+            float: left;
+        }
+
+        .h4 {
+            font-family: "Open Sans", sans-serif;
+            font-size: 22px;
+           
+
+        }
+
+        .h5 {
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            
+        }
+
+        .buttonstyle {
+            background-color: #3a7ca5;
+            padding: 8px 15px;
+            border-radius: 12px;
+            border-color: #3a7ca5;
+            color: white;   
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            
+        }
+
+        .imgstyle {
+            width: 300px;
+        }
+    
     </style>
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -33,11 +79,8 @@
             
 <div class="container-fluid text-center">  
     
-    <div class="bg-image" style="
-    background-image: url('images/bg.jpg');
-    height: 100vh">
-        <div class="d-grid gap-2 col-6 mx-auto">
-            
+    <div class="bg-image" style="background-image: url('images/bg.jpg');height: 100vh">
+        <div class="d-grid gap-2 col-6 mx-auto"> 
             <span class="border align-items-center">
                 <form action="/ingredients" method="GET">
                     <!-- <h2>Welcome back<span data-th-each="${name}"></span>!</h2> -->
@@ -48,9 +91,7 @@
                 <form action="/createForm">
                     <button class="btn btn-primary" type="submit">Create Recipe</button>
                 </form>
-
             </span>
-            
         </div>
     </div>
 </div>
@@ -58,26 +99,23 @@
 
 <div class="container">  
     <div class="row">
-        <div class="col-6 col-sm-3">
-            <table>
-                <tr data-th-each=" r : ${list}">
-                    <td>
-                        <img data-th-src="${r.imageUrl}" alt="">
-                        <span data-th-text="${r.id}"></span>
-                        <span data-th-text="${r.title}"></span>
-    
-                        <!-- part 2 of html -->
-                        <form action="/display" method="GET">
-                            <button type="submit" data-th-value="${r.id}" name="id">Get Recipe</button>
-                    </form>
-                    </td> 
-                </tr>
-            </table>
-        </div>
-        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-       
-            </div>
+        <div class="col-sm-4 p-2 justify-content-center text-center" data-th-each=" recipe : ${list}">
+            <div class="card" style="width:400px">
+            <form action="/display" method="GET">
+                
+                    <div>
+                        <img class="imgstyle" img data-th-src="${recipe.imageUrl}" alt="">
+                
+                    <div class="h5 id" data-th-text="${recipe.id}"></div>
+                
+                    <div class="h4 title" data-th-text="${recipe.title}"></div>
         
+                    <button class="buttonstyle" button type="submit" data-th-value="${recipe.id}" name="id" style="font-size: small;">Get Recipe</button>
+                    </div>
+                
+            </div>
+            </form>
+          </div> 
     </div>
 </div>
 </body>
@@ -85,3 +123,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </html>
+
+

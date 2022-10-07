@@ -25,23 +25,22 @@
     <section class="well4 bg-primary">
         <div class="container">
             <div class="row">
-                <div class="grid_6 wow fadeInRight">
-                    <img data-th-src="${retrieveRD.imageUrl}" alt=""><br><br>
-                    READY IN: <span data-th-text="${retrieveRD.readyInMinutes}"></span> MINUTES<br>
-                    SERVINGS: <span data-th-text="${retrieveRD.servings}"></span><br>
-                    <ul>
-                        
-                        INGREDIENTS: <li data-th-text="${retrieveRD.ingredients}"></li><br>
-                        
-                    </ul>
-                   
-                    <ul>
-                        <li data-th-each="l : ${retrieveRD.steps}">
-                            <span data-th-text="${l}"></span>
-                        </li>
-                    </ul>
-
+                <div class="col-6 d-flex justify-content-center text-center">
+                                      
+                        <img data-th-src="${retrieveRD.imageUrl}" alt=""><br><br>                
                     
+                </div>
+                <div class="col-6 d-flex justify-content-center text-center">
+                    READY IN: <span data-th-text="${retrieveRD.readyInMinutes}"></span> MINUTES<br>
+                        SERVINGS: <span data-th-text="${retrieveRD.servings}"></span><br>
+                        <ul>
+                        INGREDIENTS: <li data-th-text="${retrieveRD.ingredients}"></li><br>
+                        </ul>
+                        <ul>
+                            <li data-th-each="l : ${retrieveRD.steps}">
+                                <span data-th-text="${l}"></span>
+                            </li>
+                        </ul>
                 </div>
             </div>
         </div>
@@ -49,3 +48,4 @@
     
 </body>
 </html>
+

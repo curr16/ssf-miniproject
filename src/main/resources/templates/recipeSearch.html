@@ -44,7 +44,8 @@
             padding: 8px 15px;
             border-radius: 12px;
             border-color: #3a7ca5;
-            color: white;   
+            color: white;
+            font-family: "Open Sans", sans-serif;
         }
 
         .card {
@@ -61,7 +62,7 @@
 
         .recipeSearchId {
             font-family: "Open Sans", sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             color: #6c757d;
           
 
@@ -71,6 +72,21 @@
             font-family: 'Amatic SC';
             font-size: 30px;
            
+        }
+
+        .bigtitle {
+            font-family: 'Amatic SC';
+            font-size: 80px;
+        }
+
+        .mainbtn {
+            background-color: #3a7ca5;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 12px;
+            border-color: #3a7ca5;
+            color: white; 
+            font-family: "Open Sans", sans-serif;  
         }
 
     
@@ -88,12 +104,12 @@
             <span class="border align-items-center">
                 <form action="/ingredients" method="GET">
                     <!-- <h2>Welcome back<span data-th-each="${name}"></span>!</h2> -->
-                    <label for="searchReceipeInput" >Recipe Search</label>
+                    <label class="bigtitle" label for="searchReceipeInput" >Recipe Search</label>
                     <input type="text" name="ingredients" class="form-control" id="searchInputReceipt">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <button class="mainbtn btn-primary" type="submit">Search</button>
                 </form>
                 <form action="/createForm">
-                    <button class="btn btn-primary" type="submit">Create Recipe</button>
+                    <button class="mainbtn btn-primary" type="submit">Create Recipe</button>
                 </form>
             </span>
         </div>
@@ -105,10 +121,9 @@
     <div class="row">
         <div class="col-sm-4 p-2 justify-content-center text-center" data-th-each=" recipe : ${list}">
             <div class="card" style="width:400px">
-            <form action="/display" method="GET">
-                
-                    <div>
-                        <img class="imgstyle" img data-th-src="${recipe.imageUrl}" alt="">
+                <form action="/display" method="GET">
+                <div>
+                    <img class="imgstyle" img data-th-src="${recipe.imageUrl}" alt="">
                 
                     <div class="recipeSearchId" data-th-text="${recipe.id}"></div>
                 
@@ -117,9 +132,9 @@
                     <button class="buttonstyle" button type="submit" data-th-value="${recipe.id}" name="id" style="font-size: small;">Get Recipe</button>
                     </div>
                 
-            </div>
+                </div>
             </form>
-          </div> 
+        </div> 
     </div>
 </div>
 </body>
